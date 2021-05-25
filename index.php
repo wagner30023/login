@@ -5,22 +5,34 @@ require_once './Model/Usuario.php';
 
 $msg = "";
 
-if (filter_input(INPUT_POST, "txtEmailRegistro", FILTER_SANITIZE_STRING))
-{
+if (filter_input(INPUT_POST, "txtEmailRegistro", FILTER_SANITIZE_STRING)) {
     $usuario = new Usuario(); // instância de usuário
     $usuarioController = new UsuarioController(); // instância de Controller
-    
-    $usuario->setNome(filter_input(INPUT_POST, "txtNomeRegistro",FILTER_SANITIZE_STRING));
-    $usuario->setEmail(filter_input(INPUT_POST, "txtEmailRegistro",FILTER_SANITIZE_STRING));
-    $usuario->setSenha(filter_input(INPUT_POST, "txtSenhaRegistro",FILTER_SANITIZE_STRING));
+
+    $usuario->setNome(filter_input(INPUT_POST, "txtNomeRegistro", FILTER_SANITIZE_STRING));
+    $usuario->setEmail(filter_input(INPUT_POST, "txtEmailRegistro", FILTER_SANITIZE_STRING));
+    $usuario->setSenha(filter_input(INPUT_POST, "txtSenhaRegistro", FILTER_SANITIZE_STRING));
     $usuario->setData(date("Y-m-d H:i:s"));
 
-
-    //  var_dump($usuario);
-
     $result  = $usuarioController->Cadastrar($usuario);
-    // echo $result;
+
+    switch ($result) {
+        case 1:
+            $msg = "<div class='alert success'> Usuário cadastrado com sucesso </div>";
+            break;
+        case -1:
+            $msg = "<div class='alert alert-warning'> Usuário já cadastrado </div>";
+            break;
+        case -2:
+            $msg = "<div class='alert alert-warning'> Dados inválidos </div>";
+            break;
+        case -10:
+            $msg = "<div class='alert alert-danger'> Houve erro ao tentar cadastrar, tente novamente mais tarde. </div>";
+            break;
+    }
 }
+
+
 
 ?>
 
