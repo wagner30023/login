@@ -18,16 +18,18 @@ if (filter_input(INPUT_POST, "txtEmailRegistro", FILTER_SANITIZE_STRING)) {
 
     switch ($result) {
         case 1:
-            $msg = "<div class='alert success'> Usuário cadastrado com sucesso </div>";
+            $msg = "<div class='alert alert-success'>Usuário cadastrado com sucesso!</div>";
             break;
+
         case -1:
-            $msg = "<div class='alert alert-warning'> Usuário já cadastrado </div>";
+            $msg = "<div class='alert alert-warning'>Usuário já está cadaastrado!</div>";
             break;
         case -2:
-            $msg = "<div class='alert alert-warning'> Dados inválidos </div>";
+            $msg = "<div class='alert alert-warning'>Dados inválidos!</div>";
             break;
+
         case -10:
-            $msg = "<div class='alert alert-danger'> Houve erro ao tentar cadastrar, tente novamente mais tarde. </div>";
+            $msg = "<div class='alert alert-danger'>Houve um erro ao tentar cadastrar, tente novamente mais tarde.</div>";
             break;
     }
 }
