@@ -5,15 +5,15 @@ require './Model/Usuario.php';
 class UsuarioDao
 {
     private $debug = true;
-    private $dir = "Arquivo";
+    private $dir = "Arquivos";
 
     public function Cadastrar(Usuario $usuario)
     {
         try {
-            $filename = $usuario->getEmail() . ".txt";
-            if (!$this->VerificaArquivoExiste) {
+            $fileName = $usuario->getEmail() . ".txt";
+            if (!$this->VerificaArquivoExiste($fileName)) {
                 //  realiza o cadastro
-                $diretorioCompleto = $this->dir . "/" . $filename;
+                $diretorioCompleto = $this->dir . "/" . $fileName;
 
                 $fopen = fopen($diretorioCompleto, "w");
 
