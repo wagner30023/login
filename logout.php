@@ -1,5 +1,6 @@
 <?php
+session_start();
 
-//  SESSÃO
+session_destroy();
 
-header('Location:index.php');
+header("Location: index.php?msg=2");

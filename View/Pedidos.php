@@ -1,3 +1,3 @@
 <div class="paginaConteudo">
-    <h1> Pedidos </h1>
+    <h1>Pedidos</h1>
 </div>
